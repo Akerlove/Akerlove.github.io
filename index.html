@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李明 - 仪器科学与技术博士生</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #2980b9;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --academic-blue: #1a5276;
+            --paper: #f9f9f9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 头部区域 */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--academic-blue));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .academic-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle, #fff 1px, transparent 1px),
+                radial-gradient(circle, #fff 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+        
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.3);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .affiliation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .university-logo {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--academic-blue);
+        }
+        
+        /* 导航栏 */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0.8rem 0;
+        }
+        
+        nav li {
+            padding: 0.5rem 1.8rem;
+        }
+        
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* 主体内容 */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            color: var(--academic-blue);
+            margin-bottom: 2.5rem;
+            text-align: center;
+            position: relative;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        /* 关于我 */
+        #about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+        
+        .about-text {
+            flex: 2;
+        }
+        
+        .about-text h3 {
+            color: var(--academic-blue);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            line-height: 1.8;
+        }
+        
+        .education {
+            flex: 1;
+            background-color: var(--paper);
+            border-radius: 10px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .education h3 {
+            color: var(--academic-blue);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        
+        .edu-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .edu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .edu-degree {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+        
+        .edu-institution {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--primary);
+        }
+        
+        .edu-date {
+            color: #666;
+            font-style: italic;
+        }
+        
+        /* 研究方向 */
+        #research {
+            background-color: #f8fafc;
+        }
+        
+        .research-areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .research-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .research-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+        
+        .research-icon {
+            height: 180px;
+            background: linear-gradient(to right, var(--accent), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+        
+        .research-content {
+            padding: 1.8rem;
+        }
+        
+        .research-title {
+            color: var(--academic-blue);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .research-description {
+            margin-bottom: 1.2rem;
+            color: #444;
+        }
+        
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .keyword {
+            background-color: #e1f0fa;
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        /* 学术成果 */
+        #publications {
+            background-color: white;
+        }
+        
+        .publication-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background-color: var(--paper);
+            border: 1px solid #ddd;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        
+        .publications-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .publication-item {
+            background-color: var(--paper);
+            border-left: 4px solid var(--accent);
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 0 5px 5px 0;
+            transition: transform 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .publication-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .pub-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--academic-blue);
+            font-size: 1.1rem;
+        }
+        
+        .pub-authors {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+        
+        .pub-journal {
+            margin-bottom: 0.8rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        .pub-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.8rem;
+        }
+        
+        .pub-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: 500;
+            padding: 0.3rem 0.8rem;
+            background-color: #e1f0fa;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        
+        .pub-link:hover {
+            background-color: #cfe7f8;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 1rem;
+            min-width: 200px;
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .contact-item h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 900px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .education {
+                width: 100%;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            nav li {
+                padding: 0.5rem 1rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .research-areas {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部区域 -->
+    <header>
+        <div class="academic-bg"></div>
+        <div class="container header-content">
+            <div class="profile-header">
+                <div class="profile-img">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h1 class="title">李明</h1>
+                <p class="subtitle">仪器科学与技术博士生 | 精密仪器研究者</p>
+                <div class="affiliation">
+                    <div class="university-logo">THU</div>
+                    <span>清华大学 | 精密仪器系</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="#about"><i class="fas fa-user"></i> 关于我</a></li>
+            <li><a href="#research"><i class="fas fa-flask"></i> 研究方向</a></li>
+            <li><a href="#publications"><i class="fas fa-book"></i> 学术成果</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> 联系方式</a></li>
+        </ul>
+    </nav>
+
+    <!-- 关于我 -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">关于我</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>个人简介</h3>
+                    <p>我是清华大学精密仪器系的博士研究生，专注于先进传感技术与精密测量仪器的研究。在导师王教授的指导下，我的研究致力于解决高精度测量中的关键问题，特别是在复杂环境下的传感精度和稳定性方面。</p>
+                    
+                    <p>我拥有扎实的仪器科学理论基础和丰富的实验经验，熟练掌握多种精密测量技术，包括光学干涉测量、微纳传感器设计和信号处理算法开发。我的研究目标是开发下一代高精度、智能化的测量仪器，为工业检测和科学研究提供创新解决方案。</p>
+                    
+                    <p>在博士研究期间，我参与了多项国家级科研项目，包括国家自然科学基金重点项目和科技部重点研发计划。这些经历不仅提升了我的科研能力，也培养了我解决复杂工程问题的实践能力。</p>
+                    
+                    <h3 style="margin-top: 2rem;">研究兴趣</h3>
+                    <p>我的研究兴趣集中在以下几个方面：高精度光学测量技术、微纳传感器设计与制造、智能仪器系统开发、测量误差补偿算法以及仪器可靠性研究。我特别关注如何将人工智能技术应用于仪器科学，以提高测量精度和自动化水平。</p>
+                </div>
+                
+                <div class="education">
+                    <h3>教育背景</h3>
+                    <div class="edu-item">
+                        <div class="edu-degree">仪器科学与技术博士</div>
+                        <div class="edu-institution">清华大学</div>
+                        <div class="edu-date">2020年 - 至今</div>
+                        <p>导师：王教授 | GPA: 3.8/4.0</p>
+                    </div>
+                    
+                    <div class="edu-item">
+                        <div class="edu-degree">仪器科学与工程硕士</div>
+                        <div class="edu-institution">上海交通大学</div>
+                        <div class="edu-date">2017年 - 2020年</div>
+                        <p>研究方向：微纳传感器设计 | GPA: 3.7/4.0</p>
+                    </div>
+                    
+                    <div class="edu-item">
+                        <div class="edu-degree">测控技术与仪器学士</div>
+                        <div class="edu-institution">哈尔滨工业大学</div>
+                        <div class="edu-date">2013年 - 2017年</div>
+                        <p>优秀毕业生 | GPA: 3.9/4.0</p>
+                    </div>
+                    
+                    <h3 style="margin-top: 2rem;">专业技能</h3>
+                    <ul style="padding-left: 1.5rem; margin-top: 1rem;">
+                        <li>精密测量技术</li>
+                        <li>光学仪器设计</li>
+                        <li>微机电系统(MEMS)</li>
+                        <li>LabVIEW & MATLAB</li>
+                        <li>传感器信号处理</li>
+                        <li>仪器可靠性分析</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 研究方向 -->
+    <section id="research">
+        <div class="container">
+            <h2 class="section-title">研究方向</h2>
+            <div class="research-areas">
+                <div class="research-card">
+                    <div class="research-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <div class="research-content">
+                        <h3 class="research-title">高精度光学测量技术</h3>
+                        <p class="research-description">研究基于激光干涉和光谱分析的高精度测量方法，开发用于纳米级位移和形貌测量的光学系统。重点解决环境干扰补偿和测量精度提升等关键问题。</p>
+                        <div class="keywords">
+                            <span class="keyword">激光干涉</span>
+                            <span class="keyword">纳米测量</span>
+                            <span class="keyword">环境补偿</span>
+                            <span class="keyword">光学传感</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="research-card">
+                    <div class="research-icon">
+                        <i class="fas fa-sensor"></i>
+                    </div>
+                    <div class="research-content">
+                        <h3 class="research-title">微纳传感器与智能仪器</h3>
+                        <p class="research-description">设计并制造基于MEMS技术的微型传感器，开发具有自诊断和自适应能力的智能仪器系统。研究重点包括传感器灵敏度提升、多功能集成和恶劣环境适应性。</p>
+                        <div class="keywords">
+                            <span class="keyword">MEMS</span>
+                            <span class="keyword">智能仪器</span>
+                            <span class="keyword">传感器融合</span>
+                            <span class="keyword">嵌入式系统</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="research-card">
+                    <div class="research-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="research-content">
+                        <h3 class="research-title">测量误差建模与补偿</h3>
+                        <p class="research-description">建立复杂测量环境下的误差模型，研究基于人工智能的误差补偿算法。开发能够实时校正温度漂移、振动干扰等影响的智能补偿系统，提高仪器长期稳定性。</p>
+                        <div class="keywords">
+                            <span class="keyword">误差补偿</span>
+                            <span class="keyword">机器学习</span>
+                            <span class="keyword">仪器校准</span>
+                            <span class="keyword">系统建模</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学术成果 -->
+    <section id="publications">
+        <div class="container">
+            <h2 class="section-title">学术成果</h2>
+            
+            <div class="publication-filters">
+                <button class="filter-btn active">全部</button>
+                <button class="filter-btn">期刊论文</button>
+                <button class="filter-btn">会议论文</button>
+                <button class="filter-btn">专利</button>
+            </div>
+            
+            <div class="publications-list">
+                <div class="publication-item">
+                    <div class="pub-title">基于激光干涉的纳米级位移测量系统及其温度漂移补偿方法</div>
+                    <div class="pub-authors">李明，王华，张伟，刘洋</div>
+                    <div class="pub-journal">Measurement Science and Technology, 2023, 34(5): 055001</div>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF全文</a>
+                        <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> 期刊链接</a>
+                    </div>
+                </div>
+                
+                <div class="publication-item">
+                    <div class="pub-title">一种基于MEMS的高灵敏度压力传感器设计与性能分析</div>
+                    <div class="pub-authors">李明，赵强，陈明</div>
+                    <div class="pub-journal">Sensors and Actuators A: Physical, 2022, 345: 113789</div>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF全文</a>
+                        <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> 期刊链接</a>
+                    </div>
+                </div>
+                
+                <div class="publication-item">
+                    <div class="pub-title">用于精密制造的在线测量系统开发</div>
+                    <div class="pub-authors">李明，王华，张伟</div>
+                    <div class="pub-journal">IEEE International Conference on Robotics and Automation (ICRA), 2022</div>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF全文</a>
+                        <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> 会议链接</a>
+                    </div>
+                </div>
+                
+                <div class="publication-item">
+                    <div class="pub-title">一种抗环境干扰的光学测量装置及方法（发明专利）</div>
+                    <div class="pub-authors">李明，王华</div>
+                    <div class="pub-journal">中国发明专利：ZL202110123456.7 | 授权日期：2022-08-15</div>
+                    <div class="pub-links">
+                        <a href="#" class="pub-link"><i class="fas fa-file-alt"></i> 专利详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <footer id="contact">
+        <div class="container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>邮箱</h3>
+                    <p>liming@tsinghua.edu.cn</p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>地址</h3>
+                    <p>清华大学精密仪器系</p>
+                    <p>北京市海淀区清华园</p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>学术主页</h3>
+                    <p>Google Scholar</p>
+                    <p>ResearchGate</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 李明 - 仪器科学与技术博士生 | 本网站使用HTML5/CSS3构建</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
